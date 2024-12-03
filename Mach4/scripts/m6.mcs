@@ -1,0 +1,85 @@
+-----------------------------------------------------------------------------
+-- Name:        Auto Tool Setting Module for NS CNC "Elara"
+-- Author:      P. Roysdon, Roysdon Watch Co.
+-- Modified by: P.Roysdon 03/09/2023
+-- Created:     03/03/2023
+-- Copyright:   
+-- License:  
+-- Change Log:
+--		03/09/2023 m6(): created from scratch
+--		03/09/2023 m6(): removed zeroing of A-axis
+--		04/06/2023 m6(): added Home Z before and after touch probe procedure
+-----------------------------------------------------------------------------
+function m6()
+	-- Initial Values
+	local inst = mc.mcGetInstance() --Get the instance of Mach4
+
+	-- Tool Values
+	local selectedTool = mc.mcToolGetSelected(inst)
+	local currentTool = mc.mcToolGetCurrent(inst)
+	
+	-- Auto Tool Probe
+	if selectedTool == currentTool then
+		mc.mcCntlSetLastError(inst, "Current tool == Selected tool")
+	else
+		mc.mcCntlSetLastError(inst, "Starting auto tool setting")
+		
+		-- Initial State
+		local Initial_X = mc.mcAxisGetPos(inst, 0) 
+		local Initial_Y = mc.mcAxisGetPos(inst, 1)
+		local Initial_Z = mc.mcAxisGetPos(inst, 2) 
+		--local Initial_A = mc.mcAxisGetPos(inst, 3)
+		local Initial_Feed = mc.mcCntlGetPoundVar(inst, mc.SV_FEEDRATE)
+		local Initial_Mode = mc.mcCntlGetPoundVar(inst, mc.SV_MOD_GROUP_3)
+			
+		-- Register Values
+		local hreg = 0
+		hreg = mc.mcRegGetHandle(inst, "iRegs0/NSCNC/HeightX")
+		local HeightSensor_X = mc.mcRegGetValue(hreg)
+		hreg = mc.mcRegGetHandle(inst, "iRegs0/NSCNC/HeightY")
+		local HeightSensor_Y = mc.mcRegGetValue(hreg)
+		hreg = mc.mcRegGetHandle(inst, "iRegs0/NSCNC/HeightZ")
+		local HeightSensor_Z = mc.mcRegGetValue(hreg)
+		hreg = mc.mcRegGetHandle(inst, "iRegs0/NSCNC/F1")
+		local F1 = mc.mcRegGetValue(hreg) -- Regular Speed
+		hreg = mc.mcRegGetHandle(inst, "iRegs0/NSCNC/F2")
+		local F2 = mc.mcRegGetValue(hreg) -- Lower Speed
+		hreg = mc.mcRegGetHandle(inst, "iRegs0/NSCNC/Z4")
+		local Z4 = mc.mcRegGetValue(hreg) -- Above Height Sensor
+		
+		-- Move to tool change position
+		mc.mcCntlGcodeExecuteWait(inst, "G90\n")
+		mc.mcCntlGcodeExecuteWait(inst, "G53 G00 Z-10\n") -- move Z
+		--mc.mcCntlGcodeExecuteWait(inst, string.format("G00 A0 F%4.4f\nG53 G00 Z-10\n", F1)) -- zero A
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G53 G00 X%4.4f Y%4.4f\n", HeightSensor_X, HeightSensor_Y)) -- move to XY
+		mc.mcCntlSetLastError(inst, string.format("Insert Tool #%1.0f, then click START\n", selectedTool))
+		mc.mcCntlToolChangeManual(inst, true);
+		mc.mcToolSetCurrent(inst, selectedTool)
+		
+		-- Start probe manover
+		--		When the probe input is activated the current Z position is recorded to #5073 variable
+		--		#500 = #5073 (the Z height of the tool probe) from the function NS_CNC.SetToolSetterPosition()
+		-- 		#1229 = toolNum system variable
+		mc.mcCntlSetLastError(inst, "Probing in Progress!")
+		mc.mcCntlGcodeExecuteWait(inst, "G53 G00 Z0.0\n") -- Home Z
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G53 G31.1 Z%4.4f F%4.4f\n", Z4, F1)) -- G31.1 probe command, move to Z4
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G31.1 Z-10000 F%4.4f\n", F2)) -- move Z until probe touch (G31.1 == Probe 1)
+		local toolNum = mc.mcCntlGetPoundVar(inst, 1229)
+		local deltaZ = mc.mcCntlGetPoundVar(inst, 5073) - mc.mcCntlGetPoundVar(inst, 500)
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G90 G10 L1 P%4.4f Z%4.4f\n G43 H%4.4f\n", toolNum, deltaZ, toolNum)) -- record results
+		mc.mcCntlSetLastError(inst, string.format("Offset = %4.4f, returning to initial position.", deltaZ))
+		
+		-- Return to inital position and restore settings
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G53 G00 Z-10 F%4.4f\n", F1)) -- return Z to safe height
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G00 X%4.4f Y%4.4f\n", Initial_X, Initial_Y)) -- move to initial XY
+		mc.mcCntlGcodeExecuteWait(inst, "G53 G00 Z0.0\n") -- Home Z
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G01 Z%4.4f F%4.4f\n", Initial_Z, F1)) -- move to initial Z
+		--mc.mcCntlGcodeExecuteWait(inst, string.format("G01 A%4.4f\n", Initial_A)) -- move to initial A
+		mc.mcCntlGcodeExecuteWait(inst, string.format("G%2.0f\nF%4.0f\n", Initial_Mode, Initial_Feed)) -- restore settings
+		mc.mcCntlSetLastError(inst, "Auto tool setting complete")
+	end
+end
+
+if (mc.mcInEditor() == 1) then
+	m6()
+end
