@@ -49,7 +49,7 @@ SigLib = {
 end,
 
 [mc.ISIG_PROBE3] = function (state)
-    -- AW Add probe protection
+    -- adp Add probe protection
     if ((state == 1) and (machState ~= mc.MC_STATE_MRUN_PROBE)) then
         mc.mcCntlEnable(inst, 0)
     end
@@ -450,13 +450,17 @@ function Mach_PLC_Script()
         KeyboardInputsToggle()
     	prb.LoadSettings()
     
-    	---------------------------------------------------------------
-    	-- Set Persistent DROs.
-    	---------------------------------------------------------------
-        -- turn on soft limits
+    
+    
+        -- adp turn on soft limits
         mc.mcSoftLimitSetState(inst, mc.Z_AXIS, mc.MC_ON);
         mc.mcSoftLimitSetState(inst, mc.Y_AXIS, mc.MC_ON);
         mc.mcSoftLimitSetState(inst, mc.X_AXIS, mc.MC_ON);
+    
+    	---------------------------------------------------------------
+    	-- Set Persistent DROs.
+    	---------------------------------------------------------------
+    
     
         DROTable = {
     	[1000] = "droJogRate", 
