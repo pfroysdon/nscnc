@@ -8,4 +8,4 @@ Zavorine Editions to Elara Mach Instance.
 - Added probe protection handler in SigLib block
 	- If probe is triggered when Probing signal is not active the machine is stopped.
 	- Need to add code to be able to toggle on and off probe protection
-- Added probing routing to flatten A axis iteratively.
+- Added probing routine to flatten A axis iteratively.
