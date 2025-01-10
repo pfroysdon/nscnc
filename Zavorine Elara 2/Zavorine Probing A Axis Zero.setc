@@ -194,7 +194,14 @@ return val
         <Event name="Left Up Script"></Event>
         <Event name="Clicked Action">0</Event>
         <Event name="Clicked Script">-- Make parallel A axis workpiece to XY plane and correct A coord system
---PRIVATE
+-- This script is meant to zero the A axis while it is holding a barquette workpiece.
+-- The workpiece is mounted in a holder and set to within 15 degrees of flat.
+-- The probe is jogged over to the middle of the workpiece in X and near the edge of the workpiece in Y closest to the user (on the Elara 2 would be a lower y value).
+-- The probe should be jogged to around a cm above the workpiece.
+-- The two parameters to set are how far down in Z to probe (default is 2cm) and how far to move up in Y for the second probe move. Default is 30mm (safe for a 50mm barquette)
+-- The script is then run and the probe measures the Z position at current probe location, then moves to second, measures, backs off and the the A axis is corrected and zerod
+-- This process is done three times. The major correction happens the first time, during the second the A axis is usualy corrected on the order of .03 degrees and on the last
+-- about .005 degrees or less.
 
 inst = mc.mcGetInstance()
 local profile = mc.mcProfileGetName(inst)
