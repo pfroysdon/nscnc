@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Mach4ScreenInfo>
+  <mcNotebookPage>
+    <Property name="Name">Zavorine</Property>
+    <Property name="Enabled">1</Property>
+    <Property name="Hidden">0</Property>
+    <Property name="Shown">1</Property>
+    <Property name="Label">Zavorine</Property>
+    <Property name="Hide Tab">0</Property>
+    <Property name="Bg Color">#F0F0F0</Property>
+    <Property name="Background Color">#F0F0F0</Property>
+    <Property name="Bg Image"></Property>
+    <Property name="Scale Method">0</Property>
+    <Property name="Text Height">8</Property>
+    <Property name="Global Script"></Property>
+    <Event name="On Enter Script"></Event>
+    <Event name="On Exit Script"></Event>
+    <mcGroup>
+      <Property name="Name">Flatten A</Property>
+      <Property name="Instance">0</Property>
+      <Property name="Top">-2</Property>
+      <Property name="Left">18</Property>
+      <Property name="Height">375</Property>
+      <Property name="Width">300</Property>
+      <Property name="Enabled">1</Property>
+      <Property name="Hidden">0</Property>
+      <Property name="Shown">1</Property>
+      <Property name="Enable With Machine">0</Property>
+      <Property name="Enabled States">0</Property>
+      <Property name="Label">Flatten A Axis</Property>
+      <Property name="Fg Color">#4d4d4d</Property>
+      <Property name="Bg Color">#e0e0e0</Property>
+      <Property name="Bg Image"></Property>
+      <Property name="Scale Method">0</Property>
+      <Property name="No Border">0</Property>
+      <Property name="Global Script"></Property>
+      <mcStaticText>
+        <Property name="Name">ProbeDepth</Property>
+        <Property name="Instance">0</Property>
+        <Property name="Top">21</Property>
+        <Property name="Left">9</Property>
+        <Property name="Height">25</Property>
+        <Property name="Width">100</Property>
+        <Property name="Enabled">1</Property>
+        <Property name="Hidden">0</Property>
+        <Property name="Shown">1</Property>
+        <Property name="Enable With Machine">0</Property>
+        <Property name="Enabled States">0</Property>
+        <Property name="Justify">-1</Property>
+        <Property name="Border">0</Property>
+        <Property name="Label">ProbeDepth</Property>
+        <Property name="Lines">1</Property>
+        <Property name="Font">1;0;-17;0;0;0;400;0;0;0;1;0;0;2;32;Arial</Property>
+        <Property name="Fg Color">#000000</Property>
+        <Property name="Bg Color"></Property>
+        <Property name="Label Code">-1</Property>
+        <Property name="Register"></Property>
+        <Property name="SysVar">0</Property>
+        <Property name="SysParam">0</Property>
+        <Event name="On Update Script"></Event>
+      </mcStaticText>
+      <mcDro>
+        <Property name="Name">ProbeDepthDro</Property>
+        <Property name="Instance">0</Property>
+        <Property name="Top">17</Property>
+        <Property name="Left">113</Property>
+        <Property name="Height">30</Property>
+        <Property name="Width">100</Property>
+        <Property name="Enabled">1</Property>
+        <Property name="Hidden">0</Property>
+        <Property name="Shown">1</Property>
+        <Property name="Enable With Machine">0</Property>
+        <Property name="Enabled States">0</Property>
+        <Property name="DRO Code">-1</Property>
+        <Property name="Register"></Property>
+        <Property name="SysVar">0</Property>
+        <Property name="SysParam">0</Property>
+        <Property name="Analog In"></Property>
+        <Property name="Analog Out"></Property>
+        <Property name="Value">20.000000</Property>
+        <Property name="Format">%.1f</Property>
+        <Property name="Min"></Property>
+        <Property name="Max"></Property>
+        <Property name="Editor">0</Property>
+        <Property name="Justify">0</Property>
+        <Property name="Border">1</Property>
+        <Property name="Font">1;0;-26;0;0;0;400;0;0;0;1;0;0;2;32;Arial</Property>
+        <Property name="UseFontScaling">0</Property>
+        <Property name="Fg Color">#4D4D4D</Property>
+        <Property name="Bg Color">#FFFFFF</Property>
+        <Property name="Editor Fg Color"></Property>
+        <Property name="Editor Bg Color">#80FF80</Property>
+        <Property name="Show Units">0</Property>
+        <Property name="Units">0</Property>
+        <Property name="Inch Display"></Property>
+        <Property name="Metric Display"></Property>
+        <Event name="On Update Script"></Event>
+        <Event name="On Modify Script">local val = select(1,...) -- Get the user supplied value.
+return val
+</Event>
+      </mcDro>
+      <mcStaticText>
+        <Property name="Name">YDist</Property>
+        <Property name="Instance">0</Property>
+        <Property name="Top">55</Property>
+        <Property name="Left">9</Property>
+        <Property name="Height">25</Property>
+        <Property name="Width">82</Property>
+        <Property name="Enabled">1</Property>
+        <Property name="Hidden">0</Property>
+        <Property name="Shown">1</Property>
+        <Property name="Enable With Machine">0</Property>
+        <Property name="Enabled States">0</Property>
+        <Property name="Justify">-1</Property>
+        <Property name="Border">0</Property>
+        <Property name="Label">Y distance</Property>
+        <Property name="Lines">1</Property>
+        <Property name="Font">1;0;-17;0;0;0;400;0;0;0;1;0;0;2;32;Arial</Property>
+        <Property name="Fg Color">#000000</Property>
+        <Property name="Bg Color"></Property>
+        <Property name="Label Code">-1</Property>
+        <Property name="Register"></Property>
+        <Property name="SysVar">0</Property>
+        <Property name="SysParam">0</Property>
+        <Event name="On Update Script"></Event>
+      </mcStaticText>
+      <mcDro>
+        <Property name="Name">YDistDro</Property>
+        <Property name="Instance">0</Property>
+        <Property name="Top">51</Property>
+        <Property name="Left">114</Property>
+        <Property name="Height">30</Property>
+        <Property name="Width">100</Property>
+        <Property name="Enabled">1</Property>
+        <Property name="Hidden">0</Property>
+        <Property name="Shown">1</Property>
+        <Property name="Enable With Machine">0</Property>
+        <Property name="Enabled States">0</Property>
+        <Property name="DRO Code">-1</Property>
+        <Property name="Register"></Property>
+        <Property name="SysVar">0</Property>
+        <Property name="SysParam">0</Property>
+        <Property name="Analog In"></Property>
+        <Property name="Analog Out"></Property>
+        <Property name="Value">30.000000</Property>
+        <Property name="Format">%.1f</Property>
+        <Property name="Min"></Property>
+        <Property name="Max"></Property>
+        <Property name="Editor">0</Property>
+        <Property name="Justify">0</Property>
+        <Property name="Border">1</Property>
+        <Property name="Font">1;0;-26;0;0;0;400;0;0;0;1;0;0;2;32;Arial</Property>
+        <Property name="UseFontScaling">0</Property>
+        <Property name="Fg Color">#4D4D4D</Property>
+        <Property name="Bg Color">#FFFFFF</Property>
+        <Property name="Editor Fg Color"></Property>
+        <Property name="Editor Bg Color">#80FF80</Property>
+        <Property name="Show Units">0</Property>
+        <Property name="Units">0</Property>
+        <Property name="Inch Display"></Property>
+        <Property name="Metric Display"></Property>
+        <Event name="On Update Script"></Event>
+        <Event name="On Modify Script">local val = select(1,...) -- Get the user supplied value.
+return val
+</Event>
+      </mcDro>
+      <mcButton2>
+        <Property name="Name">FlatAButton</Property>
+        <Property name="Instance">0</Property>
+        <Property name="Top">124</Property>
+        <Property name="Left">72</Property>
+        <Property name="Height">102</Property>
+        <Property name="Width">151</Property>
+        <Property name="Enabled">1</Property>
+        <Property name="Hidden">0</Property>
+        <Property name="Shown">1</Property>
+        <Property name="Enable With Machine">0</Property>
+        <Property name="Enabled States">0</Property>
+        <Property name="Label">Flatten\nA Axis</Property>
+        <Property name="Font">1;10;-13;0;0;0;400;0;0;0;0;3;2;1;34;Myriad Web</Property>
+        <Property name="Fg Color">#FFFFFF</Property>
+        <Property name="Text Color">#FFFFFF</Property>
+        <Property name="Bg Color">#4B4B4B</Property>
+        <Property name="Mouse Over Color"></Property>
+        <Property name="Down Color"></Property>
+        <Property name="Border Color"></Property>
+        <Property name="Button Color">#4B4B4B</Property>
+        <Property name="Border">2</Property>
+        <Property name="Corner Radius">0</Property>
+        <Property name="Leave Is Up">0</Property>
+        <Event name="Left Down Action">0</Event>
+        <Event name="Left Up Action">0</Event>
+        <Event name="Left Down Script"></Event>
+        <Event name="Left Up Script"></Event>
+        <Event name="Clicked Action">0</Event>
+        <Event name="Clicked Script">-- Make parallel A axis workpiece to XY plane and correct A coord system
+--PRIVATE
+
+inst = mc.mcGetInstance()
+local profile = mc.mcProfileGetName(inst)
+local path = mc.mcCntlGetMachDir(inst)
+
+package.path = path .. "\\Modules\\?.lua;" .. path .. "\\Profiles\\" .. profile .. "\\Modules\\?.lua;"
+
+--Master module
+package.loaded.MasterModule = nil
+mm = require "mcMasterModule"
+
+--Probing module
+package.loaded.Probing = nil
+local prb = require "mcProbing"
+
+
+local YDist = scr.GetProperty("YDistDro", "Value")
+local ZDist = scr.GetProperty("ProbeDepthDro", "Value")
+--local ZDist = 15
+--local YDist = 30
+local SetWork = scr.GetProperty("ledSetWork", "Value")
+
+
+------------- Errors -------------
+if (YDist == nil or ZDist== nil) then
+	mc.mcCntlSetLastError(inst, "Probe: Probe distances not input")
+	do return end
+end
+
+------------- Define Vars -------------
+prb.NilVars(100, 150)
+
+local SlowFeed = mc.mcProfileGetDouble(inst , "ProbingSettings", "SlowFeed", 0.000)
+local FastFeed = mc.mcProfileGetDouble(inst , "ProbingSettings", "FastFeed", 0.000)
+local BackOff = mc.mcProfileGetDouble(inst , "ProbingSettings", "BackOff", 0.000)
+local ProbeCode = mc.mcProfileGetDouble(inst , "ProbingSettings", "GCode", 0.000)
+
+------------- Get current state -------------
+local CurFeed = mc.mcCntlGetPoundVar(inst, mc.SV_FEEDRATE)
+local CurFeedMode = mc.mcCntlGetPoundVar(inst, mc.SV_MOD_GROUP_1)
+local CurAbsMode = mc.mcCntlGetPoundVar(inst, mc.SV_MOD_GROUP_3)
+
+------------- Check Probe -------------
+rc = prb.CheckProbe(1, ProbeCode); if not rc then; do return end; end
+
+------------- Measure and Correct Thrice -------------
+for i=0,2,1 
+do
+	
+    local rc = mc.mcCntlGcodeExecuteWait(inst, "G0 G91 G40 G80") -- set to incremental mode
+    mm.ReturnCode(rc)
+
+    ------------- Probe Surface -------------
+
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G%.1f Z%.4f F%.1f", ProbeCode, -ZDist, FastFeed)) -- probe down in Z
+	mm.ReturnCode(rc)
+	rc = prb.CheckProbe(0, ProbeCode); if not rc then; do return end; end
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G1 Z%.4f F%.1f", BackOff, FastFeed))
+	mm.ReturnCode(rc)
+	--Measure
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G%.1f Z%.4f F%.1f", ProbeCode, -BackOff*2, SlowFeed))
+	mm.ReturnCode(rc)
+	rc = prb.CheckProbe(0, ProbeCode); if not rc then; do return end; end
+	local z1 = mc.mcCntlGetPoundVar(inst, mc.SV_PROBE_POS_Z)
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G0 Z%.4f F%.1f", ZDist, FastFeed)) -- retract back up
+	mm.ReturnCode(rc)
+
+	------------- Probe Second Point -------------
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G0 Y%.4f F%.1f", YDist, FastFeed)) -- move to second point in Y
+	mm.ReturnCode(rc)
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G%.1f Z%.4f F%.1f", ProbeCode, -ZDist*2, FastFeed))
+	mm.ReturnCode(rc)
+	rc = prb.CheckProbe(0, ProbeCode); if not rc then; do return end; end
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G1 Z%.4f F%.1f", BackOff, FastFeed))
+	mm.ReturnCode(rc)
+	--Measure
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G%.1f Z%.4f F%.1f", ProbeCode, -BackOff*2, SlowFeed))
+	mm.ReturnCode(rc)
+	rc = prb.CheckProbe(0, ProbeCode); if not rc then; do return end; end
+	local z2 = mc.mcCntlGetPoundVar(inst, mc.SV_PROBE_POS_Z)
+
+	------------- Retract For Correction-----------------
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G0 G91 Y%.1f Z55 F%.1f", -YDist, FastFeed))
+	mm.ReturnCode(rc)
+
+	------------- Calculate Angle -------------
+	local angle = -math.atan((z1-z2)/YDist)*180/math.pi
+
+	------------- Set Angle And Move A-axis To Zero -------------
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G10 L2 P1 A0\n G92 A%.6f", angle))
+	mm.ReturnCode(rc)
+	rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G0 G90 A0"))
+	mm.ReturnCode(rc)
+    mc.mcCntlSetLastError(inst, string.format("Corrected A-axis by %.3f degrees", math.abs(angle)))
+
+    ------------- Return to Probing Start Point -------------
+    if i&lt;2 then 
+    rc = mc.mcCntlGcodeExecuteWait(inst, string.format("G0 G91 Z-50 F%.1f", FastFeed))
+    mm.ReturnCode(rc)
+    end
+
+
+end
+------------- Reset State ------------------------------------
+mc.mcCntlSetPoundVar(inst, mc.SV_FEEDRATE, CurFeed)
+mc.mcCntlSetPoundVar(inst, mc.SV_MOD_GROUP_1, CurFeedMode)
+mc.mcCntlSetPoundVar(inst, mc.SV_MOD_GROUP_3, CurAbsMode)
+</Event>
+        <Event name="Goto Page"></Event>
+        <Event name="Run MDI"></Event>
+      </mcButton2>
+    </mcGroup>
+  </mcNotebookPage>
+</Mach4ScreenInfo>
