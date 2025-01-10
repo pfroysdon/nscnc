@@ -1,7 +1,7 @@
 Zavorine Editions to Elara Mach Instance.
 
 - Added functional Home All button to main screen
-- Soft limits turned on at runtime
+- Soft limits turned on at runtime (in PLC First Run section of Screen Script)
 	- Since z carriage can crash into 4th axis housing (wtf) set a z height soft limit to prevent that as well as regular softlimits near XY limit switches
 - Added Soft Limit toggle button to main screen
 - In NS_CNC.lua in the tool change script added code to toggle off z soft limit during tool change so that spindle can actually get close enought to drop and pick up tools. If soft limits were turned on before the tool change the z soft limit is turned back on at the end of the tool change
